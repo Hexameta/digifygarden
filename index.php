@@ -225,7 +225,7 @@ include './util/connection.php';
           <div class="d-flex text-center justify-content-center align-items-center">
             <p class="small text-gray mb-0">
               ©
-              <a href="" target="_blank">DigifyGarden</a>
+              <a href="https://www.hexameta.in" target="_blank">HexaMeta Technologies</a>
               <span class="current-year"></span>. All rights reserved.
             </p>
           </div>

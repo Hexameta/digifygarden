@@ -181,12 +181,12 @@ include './util/connection.php';
                     <a href="https://www.linkedin.com/in/mohammed-yaseen-b695a81b3/"><button type="button" class="btn btn-social-icon btn-linkedin btn-circle  btn-md"><i class="fab fa-linkedin"></i></button></a>
                     <a href="http://www.instagram.com/mohdyaseen.official/"><button type="button" class="btn btn-social-icon btn-instagram btn-circle btn-md"><i class="fab fa-instagram"></i></button></a>
                     <h5 class="lead mt-3 mb-1">
-                      <a href="">Jino Manoj John</a>
+                      <a href="https://jinojohn.me">Jino Manoj John</a>
                     </h5>
-                    <a href=""><button type="button" class="btn btn-social-icon btn-github btn-circle btn-md"><i class="fab fa-github"></i></button></a>
-                    <a href=""><button type="button" class="btn btn-social-icon btn-behance btn-circle btn-md"><i class="fab fa-behance"></i></button></a>
-                    <a href=""><button type="button" class="btn btn-social-icon btn-linkedin btn-circle btn-md"><i class="fab fa-linkedin"></i></button></a>
-                    <a href=""><button type="button" class="btn btn-social-icon btn-instagram btn-circle btn-md"><i class="fab fa-instagram"></i></button></a>
+                    <a href="https://github.com/jinomanojjohn"><button type="button" class="btn btn-social-icon btn-github btn-circle btn-md"><i class="fab fa-github"></i></button></a>
+                    <a href="https://www.behance.net/jinojohn6"><button type="button" class="btn btn-social-icon btn-behance btn-circle btn-md"><i class="fab fa-behance"></i></button></a>
+                    <a href="https://www.linkedin.com/in/thejinojohn"><button type="button" class="btn btn-social-icon btn-linkedin btn-circle btn-md"><i class="fab fa-linkedin"></i></button></a>
+                    <a href="http://www.instagram.com/the.jino"><button type="button" class="btn btn-social-icon btn-instagram btn-circle btn-md"><i class="fab fa-instagram"></i></button></a>
 
                   
                   </div>

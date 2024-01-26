@@ -127,7 +127,18 @@ INSERT INTO `tbl_page` (`about`, `id`) VALUES
 ('Digital Garden is a platform through which colleges can easily make your garden digital and share it with students. This initiative helps colleges to display the data of a particular tree in their garden, which is readily available on this website and also helps students to participate in planting more trees and be more involved.', 2);
 
 -- --------------------------------------------------------
+--
+-- Table structure for table `tbl_scan_log`
+--
 
+CREATE TABLE `tbl_scan_log` (
+  `id` int(11) NOT NULL,
+  `tree_id` varchar(50) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ip_address` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
 --
 -- Table structure for table `tbl_tree`
 --

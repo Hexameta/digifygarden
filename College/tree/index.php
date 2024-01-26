@@ -64,7 +64,7 @@ window.location.href = "../../" ;
         $target_dir = "./tree_images/";
         $target_file = $target_dir . $t_id . ".jpg";
         $uploadOk = 1;
-        if ($_FILES["image"]["size"] > 500000) {
+        if ($_FILES["image"]["size"] > 5000000) {
             $error = "Sorry, your file is too large.";
             $uploadOk = 0;
         }

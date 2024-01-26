@@ -164,6 +164,11 @@ input[type=number] {
                     <input type="file" name="clg_proof" id="form3Example8" accept="application/pdf" required>
                   </div>
 
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example8">Upload Logo of College : </label>
+                    <input type="file" name="clg_logo" id="form3Example8" accept="image/jpeg,image/png" required>
+                  </div>
+
 
                   <div class="d-flex justify-content-end pt-3 ">
                     <a href="../index.php" class="btn btn-lg">Go Back</a>

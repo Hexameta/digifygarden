@@ -50,15 +50,15 @@ $err="";
         </script>';
     
         }
-    $target_dir = "../uploads/";
-    $target_file = $target_dir . $u_id.".pdf";
+    $target_file = "../uploads/" . $u_id.".pdf";
+    $file = $_FILES["clg_logo"]["name"];
+
+    $target_file_Logo = "../logos/" . $u_id.".png";
     $uploadOk = 1;
     if($_FILES){
     
-      if ($_FILES["clg_proof"]["size"] > 5000000) {
+      if ($_FILES["clg_proof"]["size"] > 5000000 && $_FILES["clg_logo"]["size"] > 5000000) {
         $err="Sorry, your file is too large.";
-        
-             
         echo '<script type="text/javascript">
         window.location.href = "./register.php?regerror='.$err.'" ;
         </script>';
@@ -91,7 +91,7 @@ $err="";
       window.location.href='register.php?regerror='".$err."';
       </script>";
       } else {
-        if (move_uploaded_file($_FILES["clg_proof"]["tmp_name"], $target_file)) {
+        if (move_uploaded_file($_FILES["clg_proof"]["tmp_name"], $target_file) && move_uploaded_file($_FILES["clg_logo"]["tmp_name"], $target_file_Logo)) {
         } else {
           $err="Sorry, there was an error uploading your file";
           echo" <script>

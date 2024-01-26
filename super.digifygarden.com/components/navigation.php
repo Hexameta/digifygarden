@@ -91,6 +91,12 @@ function navigationBar($username){
                 <span>Tree View</span>
               </a>
             </li>
+            <li class="treeview">
+              <a href="log.php">
+                <i class="fa fa-history"></i>
+                <span>Scanning Log</span>
+              </a>
+            </li>
            
             <li class="aboutpage">
               <a href="aboutpage.php">

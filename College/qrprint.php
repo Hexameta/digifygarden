@@ -14,7 +14,7 @@ if (!isset($_GET['pid'])) {
     </script>";
 }
 $tree_id = $_GET["pid"];
-$query = "select t_id from tbl_tree where t_id = '$tree_id'";
+$query = "select * from tbl_tree where t_id = '$tree_id'";
 $result = mysqli_query($conn, $query);
 ?>
 <!DOCTYPE html>
@@ -150,7 +150,11 @@ $result = mysqli_query($conn, $query);
             padding-left: 10%;
             padding-right: 10%;
             position: relative;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
             margin-top: 20px;
+            margin-bottom: 10px;
         }
 
         .heading {
@@ -160,8 +164,8 @@ $result = mysqli_query($conn, $query);
         }
 
         .clogo img {
-            width: 100%;
-            height: 100%;
+            height: 100px;
+
         }
 
         .heading img {
@@ -263,19 +267,29 @@ $result = mysqli_query($conn, $query);
             transition: 0s;
             transform: translate(0, 5%);
         }
-        p{
+
+        .note {
             width: 100%;
             text-align: center;
             color: #fff;
+        }
+
+        .treename {
+            color: #0006;
+            position: absolute;
+            right: -9%;
+            bottom: 9%;
+            font-size: 12px;
+            transform: rotate(-90deg);
         }
     </style>
 </head>
 
 <body>
-    <p>NOTE: please download through computer for printing quality and size</p>
+    <p class="note">NOTE: please download through computer for printing quality and size</p>
     <?php $row = mysqli_fetch_array($result) ?>
     <div class="container">
-        
+
         <div class="base">
             <!-- The background image -->
             <figure class="card__thumbnail">
@@ -283,23 +297,30 @@ $result = mysqli_query($conn, $query);
             </figure>
             <div class="card">
                 <div class="clogo">
-                    <img src="assets/img/portfolio/AlAmeenLogo.svg" alt="college Name" />
+                    <img src="../logos/<?php echo $row["u_id"] ?>.png" alt="college Name" />
                 </div>
                 <div class="heading">
                     <img src="assets/img/portfolio/DigifyGardenlogo.svg" alt="digifygarden" />
                 </div>
                 <div class="qrmain">
-                    <img id="qrimg" src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http://digifygarden.com/College/tree-details.php?id=<?php echo $row["t_id"]; ?>&choe=UTF-8" title="Link to Google.com" />
+                    <img id="qrimg"
+                        src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http://digifygarden.com/College/tree-details.php?id=<?php echo $row["t_id"]; ?>&choe=UTF-8"
+                        title="Link to Google.com" />
                     <span>SCAN ME</span>
                 </div>
+                <p class="treename">
+                    <?php echo $row["t_name"] ?>
+                </p>
             </div>
+
         </div>
-        
+
     </div>
     </div>
     <div class="float">
-            <button class="button-86" role="button" onclick="printqr('<?php echo $row['t_id']; ?>')">Download PDF</button>
-            <button class="button-86" role="button" onclick="downloadBase64File('<?php echo $row['t_id']; ?>')">Download JPEG</button>
+        <button class="button-86" role="button" onclick="printqr('<?php echo $row['t_id']; ?>')">Download PDF</button>
+        <button class="button-86" role="button" onclick="downloadBase64File('<?php echo $row['t_id']; ?>')">Download
+            JPEG</button>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>

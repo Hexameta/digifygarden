@@ -19,12 +19,13 @@ include './util/connection.php';
   <meta name="msapplication-TileColor" content="#ffffff" />
   <meta name="theme-color" content="#ffffff" />
   <link type="text/css" href="node_modules/%40fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link type="text/css" href="node_modules/prismjs/themes/prism.css" rel="stylesheet" />
   <link type="text/css" href="node_modules/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
   <link type="text/css" href="css/leaf.css" rel="stylesheet" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7496626222666537"
-     crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
 
 </head>
 
@@ -53,15 +54,15 @@ include './util/connection.php';
               We convert your ordinary garden into <br class="d-none d-lg-inline" />a Digital garden in an easy way .
             </p>
             <div class="mt-4 mt-lg-5 mb-5 mb-lg-0">
-              <a href="collageList/collageList.php" class="btn btn-md btn-primary animate-up-2 mr-3"><span class="btn-inner-text"><i class="fas fa-book-reader mr-2"></i>Colleges</span> </a>
+              <a href="collageList/collageList.php" class="btn btn-md btn-primary animate-up-2 mr-3"><span
+                  class="btn-inner-text"><i class="fas fa-book-reader mr-2"></i>Colleges</span> </a>
               <?php
-        if (isset($_SESSION['u_id'])) {
-         echo'<a href="./College" class="btn btn-md btn-white mr-3"><span class="btn-inner-text"><i class="fas fa-user mr-2"></i>College Dashboard</span></a>';
-        }
-        else {
-         echo'<a href="login/login.php" class="btn btn-md btn-white mr-3"><span class="btn-inner-text"><i class="fas fa-user mr-2"></i>Sign In</span></a>';
-        }
-        ?>
+              if (isset($_SESSION['u_id'])) {
+                echo '<a href="./College" class="btn btn-md btn-white mr-3"><span class="btn-inner-text"><i class="fas fa-user mr-2"></i>College Dashboard</span></a>';
+              } else {
+                echo '<a href="login/login.php" class="btn btn-md btn-white mr-3"><span class="btn-inner-text"><i class="fas fa-user mr-2"></i>Sign In</span></a>';
+              }
+              ?>
             </div>
           </div>
           <div class="col-4 col-md-5 col-lg-6 order-lg-2">
@@ -100,7 +101,10 @@ include './util/connection.php';
                 <div class="card-body text-center">
                   <h6 class="font-weight-bold mb-2">Total Colleges</h6>
                   <h2 class="text-gray mb-0">
-                    <span class="icon-danger mr-2"><i class="fas fa-long-arrow-alt-up"></i></span><span class="counter display-3 mr-2"><?php echo $tclg; ?></span>
+                    <span class="icon-danger mr-2"><i class="fas fa-long-arrow-alt-up"></i></span><span
+                      class="counter display-3 mr-2">
+                      <?php echo $tclg; ?>
+                    </span>
                   </h2>
 
                 </div>
@@ -109,19 +113,33 @@ include './util/connection.php';
                 <div class="card-body text-center">
                   <h6 class="font-weight-bold mb-2">Total Trees</h6>
                   <h2 class="text-gray mb-0">
-                    <span class="icon-danger mr-2"><i class="fas fa-long-arrow-alt-up"></i></span><span class="counter display-3 mr-2"><?php echo $tnum; ?></span>
+                    <span class="icon-danger mr-2"><i class="fas fa-long-arrow-alt-up"></i></span><span
+                      class="counter display-3 mr-2">
+                      <?php echo $tnum; ?>
+                    </span>
                   </h2>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       </div>
     </section>
-    <div class="section section-lg">
+    <div class="mt-4">
       <div class="container">
+        <div class="row mb-2 mb-lg-4 justify-content-center">
+          <div class="d-flex col-md-4 mt-2 justify-content-center">
+            <img src="./assets/img/qrboard/acrylic1.jpeg" style="border-radius:5px;object-fit:cover" height='300px' width='300px'/>
+          </div>
+          <div class="d-flex col-md-4 mt-2 justify-content-center">
+            <img src="./assets/img/qrboard/acrylic2.jpeg" style="border-radius:5px;object-fit:cover" height='300px' width='300px' />
+          </div>
+          <div class="d-flex col-md-4 mt-2 justify-content-center">
+            <img src="./assets/img/qrboard/acrylic3.jpeg" style="border-radius:5px;object-fit:cover" height='300px' width='300px'/>
+          </div>
+        </div>
         <div class="row mb-4 mb-lg-6">
+
           <div class="col-lg-6 pr-lg-5">
             <p class="h5 font-weight-bold lh-180">
 
@@ -139,6 +157,10 @@ include './util/connection.php';
 
             </p>
           </div>
+
+
+
+
           <div class="col-lg-6">
             <p class="lead lh-180">
               Digital Garden will assist students in learning more about the flora.
@@ -154,7 +176,8 @@ include './util/connection.php';
           </div>
         </div>
         <div class="col text-center">
-          <a href="about.php" class="btn btn-md btn-primary animate-up-2 mr-3"><span class="btn-inner-text"><i class="fas fa-book-open mr-2"></i>Learn more about
+          <a href="about.php" class="btn btn-md btn-primary animate-up-2 mr-3"><span class="btn-inner-text"><i
+                class="fas fa-book-open mr-2"></i>Learn more about
               DigifyGarden</span></a>
         </div>
       </div>
@@ -174,21 +197,24 @@ include './util/connection.php';
                   </p>
                   <div class="template-demo">
                     <h5 class="lead mt-3 mb-1">
-                      <a href="https://mohammedyaseen.live/">Mohammed Yaseen</a>
+                      <a href="https://www.hexameta.in">Hexameta Technologies</a>
                     </h5>
-                    <a href="https://github.com/mhdyaseen8841"><button type="button" class="btn btn-social-icon btn-github btn-circle btn-md"><i class="fab fa-github"></i></button></a>
-                    <a href="https://twitter.com/mohammedyaseenO"><button type="button" class="btn btn-social-icon btn-twitter btn-circle btn-md"><i class="fab fa-twitter"></i></button></a>
-                    <a href="https://www.linkedin.com/in/mohammed-yaseen-b695a81b3/"><button type="button" class="btn btn-social-icon btn-linkedin btn-circle  btn-md"><i class="fab fa-linkedin"></i></button></a>
-                    <a href="http://www.instagram.com/mohdyaseen.official/"><button type="button" class="btn btn-social-icon btn-instagram btn-circle btn-md"><i class="fab fa-instagram"></i></button></a>
-                    <h5 class="lead mt-3 mb-1">
+                    <a href="mail:hexametatech@gmail.com"><button type="button"
+                        class="btn btn-social-icon btn-twitter btn-circle btn-md"><i
+                          class="fas fa-envelope fa-2x"></i></button></a>
+                    <a href="https://www.linkedin.com/company/hexameta-technologies/"><button type="button"
+                        class="btn btn-social-icon btn-linkedin btn-circle  btn-md"><i
+                          class="fab fa-linkedin fa-2x"></i></button></a>
+                    <a href="https://www.instagram.com/hexameta.in/"><button type="button"
+                        class="btn btn-social-icon btn-instagram btn-circle btn-md"><i
+                          class="fab fa-instagram fa-2x"></i></button></a>
+                    <!-- <h5 class="lead mt-3 mb-1">
                       <a href="https://jinojohn.me">Jino Manoj John</a>
                     </h5>
                     <a href="https://github.com/jinomanojjohn"><button type="button" class="btn btn-social-icon btn-github btn-circle btn-md"><i class="fab fa-github"></i></button></a>
                     <a href="https://www.behance.net/jinojohn6"><button type="button" class="btn btn-social-icon btn-behance btn-circle btn-md"><i class="fab fa-behance"></i></button></a>
                     <a href="https://www.linkedin.com/in/thejinojohn"><button type="button" class="btn btn-social-icon btn-linkedin btn-circle btn-md"><i class="fab fa-linkedin"></i></button></a>
-                    <a href="http://www.instagram.com/the.jino"><button type="button" class="btn btn-social-icon btn-instagram btn-circle btn-md"><i class="fab fa-instagram"></i></button></a>
-
-                  
+                    <a href="http://www.instagram.com/the.jino"><button type="button" class="btn btn-social-icon btn-instagram btn-circle btn-md"><i class="fab fa-instagram"></i></button></a> -->
                   </div>
 
                 </div>
@@ -200,7 +226,8 @@ include './util/connection.php';
                     We are hard working people and we need every little bit of
                     help that we can get.
                   </p>
-                  <a href="https://www.buymeacoffee.com/jino" class="btn btn-md btn-primary animate-up-2 mr-3"><i class="fas fa-donate mr-1"></i> Donate</a>
+                  <a href="https://www.buymeacoffee.com/hexameta" class="btn btn-md btn-primary animate-up-2 mr-3"><i
+                      class="fas fa-donate mr-1"></i> Donate</a>
                 </div>
               </div>
             </div>
@@ -254,7 +281,7 @@ include './util/connection.php';
   <script src="node_modules/jqvmap/dist/maps/jquery.vmap.world.js"></script>
   <script src="assets/js/leaf.js"></script>
   <script>
-    (function() {
+    (function () {
       var js =
         "window['__CF$cv$params']={r:'759f143fcc604565',m:'lI6ZmiB37SfUK8GLi3T0IpR0eYjTnhWFLPQ2t.kPTDA-1665737550-0-AcgkQ1f8fYR3nHEkm9sx1SWAgDose8KZPoiIcAummCPMYbS/tNVk6Agj8x+V7Hw84L/eojrODq+AYUpv4y2eMVq0F4gbDQCg+byvaBBEU8IHDgR+atRVUhex8vCBU/Jd5Q==',s:[0x699cb87d30,0x8fdfafc44b],u:'/cdn-cgi/challenge-platform/h/g'};var now=Date.now()/1000,offset=14400,ts=''+(Math.floor(now)-Math.floor(now%offset)),_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='../cdn-cgi/challenge-platform/h/g/scripts/alpha/invisible5615.js?ts='+ts,document.getElementsByTagName('head')[0].appendChild(_cpo);";
       var _0xh = document.createElement("iframe");
@@ -281,8 +308,8 @@ include './util/connection.php';
       } else if (window.addEventListener) {
         document.addEventListener("DOMContentLoaded", handler);
       } else {
-        var prev = document.onreadystatechange || function() {};
-        document.onreadystatechange = function(e) {
+        var prev = document.onreadystatechange || function () { };
+        document.onreadystatechange = function (e) {
           prev(e);
           if (document.readyState !== "loading") {
             document.onreadystatechange = prev;

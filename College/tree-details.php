@@ -1,4 +1,24 @@
 <?php
+function get_client_ip()
+{
+  $ipaddress = '';
+  if (isset($_SERVER['HTTP_CLIENT_IP']))
+    $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+  else if (isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+    $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+  else if (isset($_SERVER['HTTP_X_FORWARDED']))
+    $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+  else if (isset($_SERVER['HTTP_FORWARDED_FOR']))
+    $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+  else if (isset($_SERVER['HTTP_FORWARDED']))
+    $ipaddress = $_SERVER['HTTP_FORWARDED'];
+  else if (isset($_SERVER['REMOTE_ADDR']))
+    $ipaddress = $_SERVER['REMOTE_ADDR'];
+  else
+    $ipaddress = 'UNKNOWN';
+  return $ipaddress;
+}
+
 session_start();
 
 if (!isset($_GET['id'])) {
@@ -26,7 +46,9 @@ if (!isset($_GET['id'])) {
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -37,8 +59,8 @@ if (!isset($_GET['id'])) {
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="assets/css/style.css" rel="stylesheet">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7496626222666537"
-     crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7496626222666537"
+    crossorigin="anonymous"></script>
 
 
 </head>
@@ -88,6 +110,11 @@ if (!isset($_GET['id'])) {
   $currentPageUrl = 'http://' . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
 
   include '../util/connection.php';
+
+  if (!isset($_SESSION['u_id'])) {
+    mysqli_query($conn, "insert into tbl_scan_log(tree_id,ip_address) values('$t_id','".get_client_ip()."')");
+  }
+
 
   $query = "SELECT * FROM tbl_tree WHERE `t_id` = '" . $t_id . "' ";
 
@@ -175,37 +202,57 @@ if (!isset($_GET['id'])) {
           <div class="col-lg-4">
             <div class="portfolio-info">
               <h3>Tree information</h3>
-              <h4><?php echo $t_name ?></h4>
+              <h4>
+                <?php echo $t_name ?>
+              </h4>
               <ul>
-              <li><strong>Common Name:</strong>:  <?php echo $com_name ?></li>
-                <li><strong>Family</strong>: <?php echo $family ?></li>
-                <li><strong>Synonym</strong>:<?php echo $synonym ?></li>
-                <li><strong>Floweing Period</strong>: <?php echo $fperiod ?></li>
-                <li><strong>Habitat</strong>:  <?php echo $habitat ?></li>
-                <li><strong>Orgin</strong>:  <?php echo $origin ?></li>
+                <li><strong>Common Name:</strong>:
+                  <?php echo $com_name ?>
+                </li>
+                <li><strong>Family</strong>:
+                  <?php echo $family ?>
+                </li>
+                <li><strong>Synonym</strong>:
+                  <?php echo $synonym ?>
+                </li>
+                <li><strong>Floweing Period</strong>:
+                  <?php echo $fperiod ?>
+                </li>
+                <li><strong>Habitat</strong>:
+                  <?php echo $habitat ?>
+                </li>
+                <li><strong>Orgin</strong>:
+                  <?php echo $origin ?>
+                </li>
               </ul>
             </div>
             <div class="portfolio-description">
               <h2>Key Characters</h2>
-              <p> <?php echo $key_char ?>  </p>
+              <p>
+                <?php echo $key_char ?>
+              </p>
             </div>
             <div class="portfolio-description">
               <h2>Uses</h2>
-              <p> <?php echo $uses ?>  </p>
+              <p>
+                <?php echo $uses ?>
+              </p>
             </div>
 
             <?php if (isset($_SESSION['u_id'])) { ?>
-            <div class="text-center">
+              <div class="text-center">
 
-              <img src="https://chart.googleapis.com/chart?cht=qr&chl=<?php echo $currentPageUrl ?>&chs=160x160&chld=L|0" class="qr-code img-thumbnail img-responsive" />
-          
-         
-            </div>
-            <div class="text-center">
+                <img
+                  src="https://chart.googleapis.com/chart?cht=qr&chl=<?php echo $currentPageUrl ?>&chs=160x160&chld=L|0"
+                  class="qr-code img-thumbnail img-responsive" />
 
-              <a class="btn btn-light" href="./qrprint.php?pid=<?php echo $t_id;?>">View QR Page</a>
-            </div>
-            <?php }?>
+
+              </div>
+              <div class="text-center">
+
+                <a class="btn btn-light" href="./qrprint.php?pid=<?php echo $t_id; ?>">View QR Page</a>
+              </div>
+            <?php } ?>
           </div>
 
 
@@ -220,7 +267,8 @@ if (!isset($_GET['id'])) {
   <footer id="footer">
     <div class="container">
       <h3>Digify Garden</h3>
-      <p>Digital Garden is a platform through which colleges can easily make your garden digital and share it with students.</p>
+      <p>Digital Garden is a platform through which colleges can easily make your garden digital and share it with
+        students.</p>
       <div class="copyright">
         &copy; Copyright <strong><span>DigifyGarden</span></strong>. All Rights Reserved
       </div>
@@ -230,7 +278,8 @@ if (!isset($_GET['id'])) {
     </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -1,7 +1,14 @@
 <?php
+//live
+// $servername = "localhost";
+// $username = "digifyadmin";
+// $password = "Digify@alameen2023";
+// $dbname = "egarden";
+
+//local
 $servername = "localhost";
-$username = "digifyadmin";
-$password = "Digify@alameen2023";
+$username = "root";
+$password = "";
 $dbname = "egarden";
 
 // Create connection

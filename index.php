@@ -18,6 +18,9 @@ include './util/connection.php';
   <link rel="mask-icon" href="assets/img/favicon/safari-pinned-tab.html" color="#ffffff" />
   <meta name="msapplication-TileColor" content="#ffffff" />
   <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="Discover how Digital Garden helps colleges showcase their gardens digitally, promoting nature, and contributing to carbon emission control. Join us in planting more trees for a sustainable future.">
+  <meta name="robots" content="index, follow">
+  <meta name="keywords" content="digital garden, college garden, nature initiative, carbon emission control, sustainability platform, eco-friendly initiatives, environmental awareness, tree planting campaigns, student engagement, sustainable living, campus greening, biodiversity conservation, green living, climate action, urban forestry, technology for eco-awareness, community gardening, climate change solutions, green community engagement, smart environmental initiatives">
   <link type="text/css" href="node_modules/%40fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">

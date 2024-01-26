@@ -20,7 +20,7 @@ if (!isset($_SESSION['u_id'])) {
   <title>E-Garden- Index</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
+  <meta name="google-adsense-account" content="ca-pub-8430383438150416">
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -74,8 +74,8 @@ if (!isset($_SESSION['u_id'])) {
     </div>
   </header><!-- End Header -->
 
-
-
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416"
+     crossorigin="anonymous"></script>
 
 </body>
 

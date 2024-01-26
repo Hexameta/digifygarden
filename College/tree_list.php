@@ -18,7 +18,7 @@ window.location.href = "../" ;
   <title>Digify Garden</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
+  <meta name="google-adsense-account" content="ca-pub-8430383438150416">
   <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href="../assets/img/brand/primary.png">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -182,7 +182,8 @@ window.location.href = "../" ;
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416"
+     crossorigin="anonymous"></script>
 </body>
 
 </html>

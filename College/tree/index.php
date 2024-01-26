@@ -18,7 +18,7 @@ window.location.href = "../../" ;
     <meta name="description" content="Colorlib Templates">
     <meta name="author" content="Colorlib">
     <meta name="keywords" content="Colorlib Templates">
-
+    <meta name="google-adsense-account" content="ca-pub-8430383438150416">
     <!-- Title Page-->
     <title>Digital Garden</title>
     <link rel="icon" type="image/x-icon" href="../../assets/img/brand/primary.png">
@@ -153,7 +153,8 @@ window.location.href = "../../" ;
 
     <!-- Main JS-->
     <script src="js/global.js"></script>
-
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416"
+     crossorigin="anonymous"></script>
 </body>
 
 </html>

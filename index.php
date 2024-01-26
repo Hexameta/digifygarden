@@ -257,7 +257,7 @@ include './util/connection.php';
         <div class="col text-center">
           <a class="footer-brand" href="index.php"><img src="assets/img/brand/primary.svg" alt="brand" /></a>
           <h6 class="text-primary pt-4 pb-5">
-            DigifyGarden - Non Profit digital garden
+            DigifyGarden - Make your garden digital
           </h6>
         </div>
       </div>

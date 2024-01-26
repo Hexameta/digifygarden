@@ -32,6 +32,14 @@ include './util/connection.php';
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7496626222666537"
     crossorigin="anonymous"></script>
 
+    <style>
+      .card_image{
+        transition: transform 1s;
+      }
+      .card_image:hover{
+        transform: scale(1.5);
+      }
+      </style>
 </head>
 
 <body>
@@ -133,17 +141,17 @@ include './util/connection.php';
     <div class="mt-4">
       <div class="container">
         <div class="row mb-2 mb-lg-4 justify-content-center">
-          <div class="d-flex col-md-4 mt-2 justify-content-center">
+          <div class="d-flex col-md-4 mt-2 justify-content-center overflow-hidden">
             <img src="./assets/img/qrboard/acrylic1.jpeg" style="border-radius:5px;object-fit:cover" height='300px'
-              width='300px' />
+              width='300px' class="card_image" />
           </div>
-          <div class="d-flex col-md-4 mt-2 justify-content-center">
+          <div class="d-flex col-md-4 mt-2 justify-content-center overflow-hidden">
             <img src="./assets/img/qrboard/acrylic2.jpeg" style="border-radius:5px;object-fit:cover" height='300px'
-              width='300px' />
+              width='300px' class="card_image" />
           </div>
-          <div class="d-flex col-md-4 mt-2 justify-content-center">
+          <div class="d-flex col-md-4 mt-2 justify-content-center overflow-hidden">
             <img src="./assets/img/qrboard/acrylic3.jpeg" style="border-radius:5px;object-fit:cover" height='300px'
-              width='300px' />
+              width='300px' class="card_image"/>
           </div>
         </div>
         <div class="row mb-4 mb-lg-6">

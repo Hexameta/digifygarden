@@ -18,9 +18,11 @@ include './util/connection.php';
   <link rel="mask-icon" href="assets/img/favicon/safari-pinned-tab.html" color="#ffffff" />
   <meta name="msapplication-TileColor" content="#ffffff" />
   <meta name="theme-color" content="#ffffff" />
-  <meta name="description" content="Discover how Digital Garden helps colleges showcase their gardens digitally, promoting nature, and contributing to carbon emission control. Join us in planting more trees for a sustainable future.">
+  <meta name="description"
+    content="Discover how Digital Garden helps colleges showcase their gardens digitally, promoting nature, and contributing to carbon emission control. Join us in planting more trees for a sustainable future.">
   <meta name="robots" content="index, follow">
-  <meta name="keywords" content="digital garden, college garden, nature initiative, carbon emission control, sustainability platform, eco-friendly initiatives, environmental awareness, tree planting campaigns, student engagement, sustainable living, campus greening, biodiversity conservation, green living, climate action, urban forestry, technology for eco-awareness, community gardening, climate change solutions, green community engagement, smart environmental initiatives">
+  <meta name="keywords"
+    content="digital garden, college garden, nature initiative, carbon emission control, sustainability platform, eco-friendly initiatives, environmental awareness, tree planting campaigns, student engagement, sustainable living, campus greening, biodiversity conservation, green living, climate action, urban forestry, technology for eco-awareness, community gardening, climate change solutions, green community engagement, smart environmental initiatives">
   <link type="text/css" href="node_modules/%40fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -132,13 +134,16 @@ include './util/connection.php';
       <div class="container">
         <div class="row mb-2 mb-lg-4 justify-content-center">
           <div class="d-flex col-md-4 mt-2 justify-content-center">
-            <img src="./assets/img/qrboard/acrylic1.jpeg" style="border-radius:5px;object-fit:cover" height='300px' width='300px'/>
+            <img src="./assets/img/qrboard/acrylic1.jpeg" style="border-radius:5px;object-fit:cover" height='300px'
+              width='300px' />
           </div>
           <div class="d-flex col-md-4 mt-2 justify-content-center">
-            <img src="./assets/img/qrboard/acrylic2.jpeg" style="border-radius:5px;object-fit:cover" height='300px' width='300px' />
+            <img src="./assets/img/qrboard/acrylic2.jpeg" style="border-radius:5px;object-fit:cover" height='300px'
+              width='300px' />
           </div>
           <div class="d-flex col-md-4 mt-2 justify-content-center">
-            <img src="./assets/img/qrboard/acrylic3.jpeg" style="border-radius:5px;object-fit:cover" height='300px' width='300px'/>
+            <img src="./assets/img/qrboard/acrylic3.jpeg" style="border-radius:5px;object-fit:cover" height='300px'
+              width='300px' />
           </div>
         </div>
         <div class="row mb-4 mb-lg-6">
@@ -166,15 +171,14 @@ include './util/connection.php';
 
           <div class="col-lg-6">
             <p class="lead lh-180">
-              Digital Garden will assist students in learning more about the flora.
+              Digify Garden will assist students in learning more about the flora.
               They can also take part in planting more trees and become more involved
               in the process. This site is mainly oriented towards students of any
               particular college.
             </p>
             <p class="lead lh-180">
-              Digital Garden was created by a group of students from
-              <a href="https://www.alameencollege.org/">Al-Ameen College</a> as a part of their
-              mini project. This website acts as form of database for the collection of trees.
+              Digify Garden was developed by <a href="https://www.alameencollege.org/">Hexameta Technologies</a>
+              as a part of their mission to control carbon emission.
             </p>
           </div>
         </div>
@@ -323,6 +327,8 @@ include './util/connection.php';
     })();
   </script>
 
-</body>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416"
+     crossorigin="anonymous"></script>
 
+</body>
 </html>

@@ -64,7 +64,7 @@ if (!isset($_SESSION['admin_id'])) {
             <?php
 
             include '../../util/connection.php';
-            $query = "SELECT tbl_scan_log.*,tbl_tree.t_name,tbl_clg.c_name,tbl_clg_address.district,tbl_clg_address.city FROM tbl_scan_log INNER JOIN tbl_tree ON tbl_tree.t_id = tbl_scan_log.tree_id INNER JOIN tbl_clg ON tbl_clg.u_id = tbl_tree.u_id inner join tbl_clg_address on tbl_clg_address.a_id = tbl_clg.a_id ";
+            $query = "SELECT tbl_scan_log.*,tbl_tree.t_name,tbl_clg.c_name,tbl_clg_address.district,tbl_clg_address.city FROM tbl_scan_log INNER JOIN tbl_tree ON tbl_tree.t_id = tbl_scan_log.tree_id INNER JOIN tbl_clg ON tbl_clg.u_id = tbl_tree.u_id inner join tbl_clg_address on tbl_clg_address.a_id = tbl_clg.a_id orderby tbl_scan_log.time DESC ";
 
             $clg = mysqli_query($conn, $query);
             if (!$clg) {

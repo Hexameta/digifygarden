@@ -39,7 +39,11 @@ include './util/connection.php';
       .card_image:hover{
         transform: scale(1.5);
       }
+      
       </style>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416"
+     crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -335,8 +339,7 @@ include './util/connection.php';
     })();
   </script>
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416"
-     crossorigin="anonymous"></script>
+
 
 </body>
 </html>

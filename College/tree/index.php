@@ -34,6 +34,8 @@ window.location.href = "../../" ;
 
     <!-- Main CSS-->
     <link href="css/main.css" rel="stylesheet" media="all">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416"
+     crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -153,8 +155,7 @@ window.location.href = "../../" ;
 
     <!-- Main JS-->
     <script src="js/global.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416"
-     crossorigin="anonymous"></script>
+    
 </body>
 
 </html>

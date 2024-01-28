@@ -39,9 +39,8 @@ if (!isset($_SESSION['u_id'])) {
 
 
   <link href="assets/css/style.css" rel="stylesheet">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7496626222666537"
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416"
      crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -196,8 +195,7 @@ if (!isset($_SESSION['u_id'])) {
   <script src="assets/js/main.js"></script>
 
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416"
-     crossorigin="anonymous"></script>
+ 
 </body>
 
 </html>

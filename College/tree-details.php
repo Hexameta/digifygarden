@@ -59,9 +59,8 @@ if (!isset($_GET['id'])) {
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="assets/css/style.css" rel="stylesheet">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7496626222666537"
-    crossorigin="anonymous"></script>
-
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416"
+     crossorigin="anonymous"></script>
 
 </head>
 
@@ -290,8 +289,7 @@ if (!isset($_GET['id'])) {
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416"
-     crossorigin="anonymous"></script>
+  
 </body>
 
 </html>

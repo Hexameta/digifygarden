@@ -27,6 +27,8 @@ $result = mysqli_query($conn, $query);
     <meta name="google-adsense-account" content="ca-pub-8430383438150416">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Digify Garden</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416"
+     crossorigin="anonymous"></script>
     <style>
         .float {
             position: fixed;
@@ -356,8 +358,7 @@ $result = mysqli_query($conn, $query);
             docu.save(name + ".pdf");
         }
     </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416"
-     crossorigin="anonymous"></script>
+   
 </body>
 
 </html>

@@ -59,8 +59,11 @@ if (!isset($_GET['id'])) {
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="assets/css/style.css" rel="stylesheet">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416"
-     crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416"
+    crossorigin="anonymous"></script>
+
+  <script async="async" data-cfasync="false"
+    src="//pl22448550.profitablegatecpm.com/2145f25aba6ecec6ee3dc5152b0886ed/invoke.js"></script>
 
 </head>
 
@@ -111,7 +114,7 @@ if (!isset($_GET['id'])) {
   include '../util/connection.php';
 
   if (!isset($_SESSION['u_id'])) {
-    mysqli_query($conn, "insert into tbl_scan_log(tree_id,ip_address) values('$t_id','".get_client_ip()."')");
+    mysqli_query($conn, "insert into tbl_scan_log(tree_id,ip_address) values('$t_id','" . get_client_ip() . "')");
   }
 
 
@@ -187,8 +190,7 @@ if (!isset($_GET['id'])) {
 
                 <div class="" style="  margin-left: auto; margin-right: auto;">
                   <?php
-                  echo '
-                  <img src="tree/tree_images/' . $t_id . '.jpg" alt="not found">';
+                  echo '<img src="tree/tree_images/' . $t_id . '.jpg" alt="not found">';
                   ?>
                 </div>
 
@@ -277,6 +279,7 @@ if (!isset($_GET['id'])) {
     </div>
   </footer><!-- End Footer -->
 
+  <div id="container-2145f25aba6ecec6ee3dc5152b0886ed"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
 
@@ -289,7 +292,7 @@ if (!isset($_GET['id'])) {
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  
+
 </body>
 
 </html>

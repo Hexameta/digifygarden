@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2024 at 11:15 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Generation Time: Feb 12, 2024 at 08:35 PM
+-- Server version: 10.5.19-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -118,15 +118,9 @@ CREATE TABLE `tbl_offers` (
   `o_id` int(11) NOT NULL,
   `tree_id` varchar(30) NOT NULL,
   `date` date NOT NULL,
+  `coupon_code` varchar(30) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_offers`
---
-
-INSERT INTO `tbl_offers` (`o_id`, `tree_id`, `date`, `status`) VALUES
-(1, 'C-2503202378508', '2024-02-09', 0);
 
 -- --------------------------------------------------------
 
@@ -141,13 +135,6 @@ CREATE TABLE `tbl_offer_winners` (
   `date` date NOT NULL,
   `mobile` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_offer_winners`
---
-
-INSERT INTO `tbl_offer_winners` (`winner_id`, `o_id`, `winner_name`, `date`, `mobile`) VALUES
-(1, 1, 'Riyas k h', '2024-02-09', '8714914848');
 
 -- --------------------------------------------------------
 
@@ -179,13 +166,6 @@ CREATE TABLE `tbl_scan_log` (
   `time` timestamp NOT NULL DEFAULT current_timestamp(),
   `ip_address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_scan_log`
---
-
-INSERT INTO `tbl_scan_log` (`id`, `tree_id`, `time`, `ip_address`) VALUES
-(3, 'c-2303202318422', '2024-02-12 07:27:42', '::1');
 
 -- --------------------------------------------------------
 
@@ -346,13 +326,13 @@ ALTER TABLE `tbl_clg_login`
 -- AUTO_INCREMENT for table `tbl_offers`
 --
 ALTER TABLE `tbl_offers`
-  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_offer_winners`
 --
 ALTER TABLE `tbl_offer_winners`
-  MODIFY `winner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `winner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_page`
@@ -364,7 +344,7 @@ ALTER TABLE `tbl_page`
 -- AUTO_INCREMENT for table `tbl_scan_log`
 --
 ALTER TABLE `tbl_scan_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
 
 --
 -- Constraints for dumped tables

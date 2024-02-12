@@ -21,12 +21,34 @@ function get_client_ip()
 
 session_start();
 
+
+
 if (!isset($_GET['id'])) {
   echo "<script>
   history.back();
   </script>
   ";
 }
+include '../util/connection.php';
+
+$t_id = $_GET['id'];
+$winner = false;
+$couponID = '';
+$o_id = '';
+$query = "select o_id,status,coupon_code from tbl_offers where tree_id = '$t_id' and status = 1";
+$offerResult = mysqli_query($conn, $query);
+if ($offerResult) {
+  if (mysqli_num_rows($offerResult)) {
+    $row = mysqli_fetch_assoc($offerResult);
+    $o_id = $row["o_id"];
+    $couponID = $row["coupon_code"];
+    $quary = "Update tbl_offers set status = 0 where o_id = $o_id";
+    mysqli_query($conn, $quary);
+    $winner = true;
+  }
+}
+
+
 ?>
 
 
@@ -46,9 +68,7 @@ if (!isset($_GET['id'])) {
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -59,22 +79,60 @@ if (!isset($_GET['id'])) {
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="assets/css/style.css" rel="stylesheet">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416"
-    crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416" crossorigin="anonymous"></script>
 
-  <script async="async" data-cfasync="false"
-    src="//pl22448550.profitablegatecpm.com/2145f25aba6ecec6ee3dc5152b0886ed/invoke.js"></script>
+  <script async="async" data-cfasync="false" src="//pl22448550.profitablegatecpm.com/2145f25aba6ecec6ee3dc5152b0886ed/invoke.js"></script>
 
-  <script type='text/javascript'
-    src='//pl22448897.profitablegatecpm.com/41/c1/ae/41c1ae51c39f28162c4aeadb4c657c5d.js'></script>
+  
+  <?php if ($winner) { ?>
+    <link rel="stylesheet" type="text/css" href="offerStyle.css">
+  <?php }else{ ?>
+    <script type='text/javascript' src='//pl22448897.profitablegatecpm.com/41/c1/ae/41c1ae51c39f28162c4aeadb4c657c5d.js'></script>
+ <?php } ?>
 
 </head>
 
 <body>
+  <?php if ($winner) { ?>
 
+    <div class="OfferBg">
+      <h1 style="text-align: center;">Take screenshot</h1>
+      <h3 style="text-align: center;">Coupon Code : <?php echo $couponID ?></h3>
+      <div class="Offercontainer">
+        <div class="image">
+
+          <p class="wintext">Congratulations Winner</p>
+          <div class="pyro">
+            <div class="before"></div>
+            <div class="after"></div>
+          </div>
+        </div>
+        <button onclick="GiveDetailButtonClick()">Give Your Details</button>
+      </div>
+    </div>
+    <div class="winnerForm">
+      <div class="container formBox">
+        <form method="post" action="offerwinner.php">
+          <input type="hidden" value="<?php echo $o_id ?>" name="oid">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input type="text" class="form-control" name="winnerName" placeholder="Enter Name" required>
+            <small class="form-text text-muted">Please enter full name</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Mobile</label>
+            <input type="text" class="form-control" name="mobile" placeholder="Enter Mobile Number" required>
+            <small class="form-text text-muted">Please enter whatsapp number</small>
+          </div>
+          <div class="d-grid justify-content-center mt-2">
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  <?php } ?>
 
   <?php
-
 
   if (isset($_SESSION['u_id'])) {
     echo ' <header id="header" class="d-flex align-items-center">
@@ -108,13 +166,13 @@ if (!isset($_GET['id'])) {
   }
   ?>
 
-
+  <script src='offerView.js'></script>
 
   <?php
-  $t_id = $_GET['id'];
+
   $currentPageUrl = 'http://' . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
 
-  include '../util/connection.php';
+
 
   if (!isset($_SESSION['u_id'])) {
     mysqli_query($conn, "insert into tbl_scan_log(tree_id,ip_address) values('$t_id','" . get_client_ip() . "')");
@@ -219,7 +277,7 @@ if (!isset($_GET['id'])) {
                 <li><strong>Synonym</strong>:
                   <?php echo $synonym ?>
                 </li>
-                <li><strong>Floweing Period</strong>:
+                <li><strong>Flowering Period</strong>:
                   <?php echo $fperiod ?>
                 </li>
                 <li><strong>Habitat</strong>:
@@ -246,9 +304,7 @@ if (!isset($_GET['id'])) {
             <?php if (isset($_SESSION['u_id'])) { ?>
               <div class="text-center">
 
-                <img
-                  src="https://chart.googleapis.com/chart?cht=qr&chl=<?php echo $currentPageUrl ?>&chs=160x160&chld=L|0"
-                  class="qr-code img-thumbnail img-responsive" />
+                <img src="https://chart.googleapis.com/chart?cht=qr&chl=<?php echo $currentPageUrl ?>&chs=160x160&chld=L|0" class="qr-code img-thumbnail img-responsive" />
 
 
               </div>
@@ -283,8 +339,7 @@ if (!isset($_GET['id'])) {
   </footer><!-- End Footer -->
 
   <div id="container-2145f25aba6ecec6ee3dc5152b0886ed"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -295,6 +350,13 @@ if (!isset($_GET['id'])) {
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+    function GiveDetailButtonClick(){
+      // console.log("clicked");
+      document.getElementsByClassName("winnerForm")[0].style.display = "flex";
+      console.log(document.getElementsByClassName("winnerForm")[0].style.display);
+    }
+  </script>
 
 </body>
 

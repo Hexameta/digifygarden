@@ -92,6 +92,18 @@ function navigationBar($username){
               </a>
             </li>
             <li class="treeview">
+              <a href="offerList.php">
+                <i class="fa fa-users"></i>
+                <span>Offers</span>
+              </a>
+            </li>
+            <li class="treeview">
+              <a href="offerWinners.php">
+                <i class="fa fa-users"></i>
+                <span>Offer Winners</span>
+              </a>
+            </li>
+            <li class="treeview">
               <a href="log.php">
                 <i class="fa fa-history"></i>
                 <span>Scanning Log</span>

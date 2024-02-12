@@ -210,6 +210,7 @@ $i++;
         "info": true,
         "autoWidth": true,
         "responsive": true,
+        "scrollX": true,
       });
     });
   </script>

@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jan 02, 2024 at 03:52 AM
--- Server version: 5.7.44-cll-lve
--- PHP Version: 8.1.16
+-- Host: 127.0.0.1
+-- Generation Time: Feb 12, 2024 at 11:15 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `tbl_admin_login` (
   `name` varchar(20) NOT NULL,
   `ad_email` varchar(50) NOT NULL,
   `password` varchar(120) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_admin_login`
@@ -56,8 +56,8 @@ CREATE TABLE `tbl_clg` (
   `a_id` int(10) NOT NULL,
   `mobnum` varchar(10) NOT NULL,
   `email` varchar(120) NOT NULL,
-  `clg_reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `clg_reg_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_clg`
@@ -78,7 +78,7 @@ CREATE TABLE `tbl_clg_address` (
   `pincode` int(6) NOT NULL,
   `district` varchar(25) NOT NULL,
   `state` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_clg_address`
@@ -99,7 +99,7 @@ CREATE TABLE `tbl_clg_login` (
   `password` varchar(60) NOT NULL,
   `status` int(2) NOT NULL,
   `remarks` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_clg_login`
@@ -111,13 +111,54 @@ INSERT INTO `tbl_clg_login` (`log_id`, `u_id`, `password`, `status`, `remarks`) 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_offers`
+--
+
+CREATE TABLE `tbl_offers` (
+  `o_id` int(11) NOT NULL,
+  `tree_id` varchar(30) NOT NULL,
+  `date` date NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_offers`
+--
+
+INSERT INTO `tbl_offers` (`o_id`, `tree_id`, `date`, `status`) VALUES
+(1, 'C-2503202378508', '2024-02-09', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_offer_winners`
+--
+
+CREATE TABLE `tbl_offer_winners` (
+  `winner_id` int(11) NOT NULL,
+  `o_id` int(11) NOT NULL,
+  `winner_name` varchar(50) NOT NULL,
+  `date` date NOT NULL,
+  `mobile` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_offer_winners`
+--
+
+INSERT INTO `tbl_offer_winners` (`winner_id`, `o_id`, `winner_name`, `date`, `mobile`) VALUES
+(1, 1, 'Riyas k h', '2024-02-09', '8714914848');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_page`
 --
 
 CREATE TABLE `tbl_page` (
   `about` longtext NOT NULL,
   `id` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_page`
@@ -127,6 +168,7 @@ INSERT INTO `tbl_page` (`about`, `id`) VALUES
 ('Digital Garden is a platform through which colleges can easily make your garden digital and share it with students. This initiative helps colleges to display the data of a particular tree in their garden, which is readily available on this website and also helps students to participate in planting more trees and be more involved.', 2);
 
 -- --------------------------------------------------------
+
 --
 -- Table structure for table `tbl_scan_log`
 --
@@ -138,7 +180,15 @@ CREATE TABLE `tbl_scan_log` (
   `ip_address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tbl_scan_log`
+--
+
+INSERT INTO `tbl_scan_log` (`id`, `tree_id`, `time`, `ip_address`) VALUES
+(3, 'c-2303202318422', '2024-02-12 07:27:42', '::1');
+
 -- --------------------------------------------------------
+
 --
 -- Table structure for table `tbl_tree`
 --
@@ -155,7 +205,7 @@ CREATE TABLE `tbl_tree` (
   `habitat` longtext NOT NULL,
   `uses` longtext NOT NULL,
   `key_char` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_tree`
@@ -244,9 +294,29 @@ ALTER TABLE `tbl_clg_login`
   ADD KEY `fk_clg` (`u_id`);
 
 --
+-- Indexes for table `tbl_offers`
+--
+ALTER TABLE `tbl_offers`
+  ADD PRIMARY KEY (`o_id`),
+  ADD KEY `tree_id` (`tree_id`);
+
+--
+-- Indexes for table `tbl_offer_winners`
+--
+ALTER TABLE `tbl_offer_winners`
+  ADD PRIMARY KEY (`winner_id`),
+  ADD KEY `o_id` (`o_id`);
+
+--
 -- Indexes for table `tbl_page`
 --
 ALTER TABLE `tbl_page`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_scan_log`
+--
+ALTER TABLE `tbl_scan_log`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -264,19 +334,37 @@ ALTER TABLE `tbl_tree`
 -- AUTO_INCREMENT for table `tbl_clg_address`
 --
 ALTER TABLE `tbl_clg_address`
-  MODIFY `a_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `a_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `tbl_clg_login`
 --
 ALTER TABLE `tbl_clg_login`
-  MODIFY `log_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `log_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `tbl_offers`
+--
+ALTER TABLE `tbl_offers`
+  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_offer_winners`
+--
+ALTER TABLE `tbl_offer_winners`
+  MODIFY `winner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_page`
 --
 ALTER TABLE `tbl_page`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_scan_log`
+--
+ALTER TABLE `tbl_scan_log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -293,6 +381,18 @@ ALTER TABLE `tbl_clg`
 --
 ALTER TABLE `tbl_clg_login`
   ADD CONSTRAINT `fk_clg` FOREIGN KEY (`u_id`) REFERENCES `tbl_clg` (`u_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_offers`
+--
+ALTER TABLE `tbl_offers`
+  ADD CONSTRAINT `tbl_offers_ibfk_1` FOREIGN KEY (`tree_id`) REFERENCES `tbl_tree` (`t_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_offer_winners`
+--
+ALTER TABLE `tbl_offer_winners`
+  ADD CONSTRAINT `tbl_offer_winners_ibfk_1` FOREIGN KEY (`o_id`) REFERENCES `tbl_offers` (`o_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tbl_tree`

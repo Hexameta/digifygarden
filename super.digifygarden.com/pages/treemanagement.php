@@ -174,7 +174,8 @@ if (!isset($_SESSION['admin_id'])) {
         "searching": true,
         "ordering": false,
         "info": true,
-        "autoWidth": true
+        "autoWidth": true,
+        "scrollX": true,
       });
     });
   </script>

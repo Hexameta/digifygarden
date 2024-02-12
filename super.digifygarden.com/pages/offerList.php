@@ -53,18 +53,18 @@ if (!isset($_SESSION['admin_id'])) {
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <section class="content-header">
+            <section class="d-flex flex-row content-header ">
                 <h1>
-                    Logs
-                    <small></small>
+                    Offers
                 </h1>
+                
 
             </section>
 
             <?php
 
             include '../../util/connection.php';
-            $query = "SELECT tbl_scan_log.*,tbl_tree.t_name,tbl_clg.c_name,tbl_clg_address.district,tbl_clg_address.city FROM tbl_scan_log INNER JOIN tbl_tree ON tbl_tree.t_id = tbl_scan_log.tree_id INNER JOIN tbl_clg ON tbl_clg.u_id = tbl_tree.u_id inner join tbl_clg_address on tbl_clg_address.a_id = tbl_clg.a_id order by tbl_scan_log.time DESC ";
+            $query = "SELECT tbl_offers.*,tbl_tree.t_name,tbl_clg.c_name,tbl_clg_address.district,tbl_clg_address.city FROM tbl_offers INNER JOIN tbl_tree ON tbl_tree.t_id = tbl_offers.tree_id INNER JOIN tbl_clg ON tbl_clg.u_id = tbl_tree.u_id inner join tbl_clg_address on tbl_clg_address.a_id = tbl_clg.a_id order by tbl_offers.date DESC ";
 
             $clg = mysqli_query($conn, $query);
             if (!$clg) {
@@ -78,8 +78,9 @@ if (!isset($_SESSION['admin_id'])) {
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="box">
-                            <div class="box-header">
-                                <h3 class="box-title">Tree Management Table</h3>
+                            <div style="display:flex; flex-direction:row; justify-content:space-between; align-items:center; padding:10px">
+                                <h3>Tree Management Table</h3>
+                                <a href="./addOffer.php"><button style="height:40px">Add Offer</button></a>
                             </div><!-- /.box-header -->
                             <div class="box-body">
                                 <table id="example1" class="table table-bordered table-striped ">
@@ -87,11 +88,12 @@ if (!isset($_SESSION['admin_id'])) {
                                         <tr>
                                             <th width="5%">Sl No.</th>
                                             <th>College Name</th>
+                                            <th>Tree ID</th>
                                             <th>Tree</th>
                                             <th>City</th>
                                             <th>District</th>
-                                            <th>Ip Address</th>
-                                            <th>Time stamp</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
 
                                         </tr>
                                     </thead>
@@ -100,22 +102,29 @@ if (!isset($_SESSION['admin_id'])) {
 
                                         <?php
                                         $i = 0;
-                                        
+
                                         if (mysqli_num_rows($clg) > 0) {
 
                                             while ($rowData = mysqli_fetch_array($clg)) {
                                                 $i++;
-                                                $dateTime = new DateTime($rowData["time"]);
+                                                $date = new DateTime($rowData["date"]);
+                                                $sts = "";
+                                                if ($rowData["status"] == 1) {
+                                                    $sts = "<Button style='background-color:#090;color:#fff;border:none'>Active</Button>";
+                                                }else{
+                                                    $sts = "<Button style='background-color:#900;color:#fff;border:none'>Inactive</Button>";
+                                                }
                                                 echo " <tr>
     <td>" . $i . "</td>
     <td>" . ($rowData['c_name']) . "</td>
+    <td>" . ($rowData['tree_id']) . "</td>
     <td>" . ($rowData['t_name']) . "</td>
     
     <td>" . ($rowData['city']) . "</td>
-    <td><i >" . ($rowData['district']) . "</i></td>
+    <td>" . ($rowData['district']) . "</td>
    
-    <td>" . ($rowData['ip_address']) . "</td>
-    <td>" . $dateTime->format('d-m-Y') . "<br>".$dateTime->format('h:i:s A')."</td>";
+    <td>" . $date->format('d-m-Y') . "</td>
+    <td>" . $sts . "</td>";
                                                 ?>
 
                                                 </tr>
@@ -123,6 +132,8 @@ if (!isset($_SESSION['admin_id'])) {
                                                 <?php
 
                                             }
+                                        } else {
+                                            echo "error";
                                         }
                                         ?>
 
@@ -133,11 +144,12 @@ if (!isset($_SESSION['admin_id'])) {
                                         <tr>
                                             <th>Sl No.</th>
                                             <th>College Name</th>
+                                            <th>Tree ID</th>
                                             <th>Tree</th>
                                             <th>City</th>
                                             <th>District</th>
-                                            <th>Ip Address</th>
-                                            <th>Time stamp</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
 
 
                                         </tr>

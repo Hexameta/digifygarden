@@ -306,6 +306,7 @@ $(document).ready(function() {
         "info": true,
         "autoWidth": true,
         "responsive": true,
+        "scrollX": true,
       });
     });
   </script>

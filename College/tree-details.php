@@ -112,7 +112,7 @@ if ($offerResult) {
     </div>
     <div class="winnerForm">
       <div class="container formBox">
-        <form method="post" action="offerwinner.php">
+        <form method="post" action="offerWinner.php">
           <input type="hidden" value="<?php echo $o_id ?>" name="oid">
           <div class="form-group">
             <label for="exampleInputEmail1">Name</label>

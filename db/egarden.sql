@@ -326,13 +326,13 @@ ALTER TABLE `tbl_clg_login`
 -- AUTO_INCREMENT for table `tbl_offers`
 --
 ALTER TABLE `tbl_offers`
-  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `tbl_offer_winners`
 --
 ALTER TABLE `tbl_offer_winners`
-  MODIFY `winner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `winner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `tbl_page`

@@ -22,8 +22,7 @@ if (!isset($_SESSION['admin_id'])) {
     <!-- Bootstrap 3.3.4 -->
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"
-        type="text/css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- DATA TABLES -->
@@ -33,8 +32,7 @@ if (!isset($_SESSION['admin_id'])) {
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link href="../dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7496626222666537"
-        crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7496626222666537" crossorigin="anonymous"></script>
 
 </head>
 
@@ -57,7 +55,7 @@ if (!isset($_SESSION['admin_id'])) {
                 <h1>
                     Offers
                 </h1>
-                
+
 
             </section>
 
@@ -111,6 +109,8 @@ if (!isset($_SESSION['admin_id'])) {
                                                 $sts = "";
                                                 if ($rowData["status"] == 1) {
                                                     $sts = "<Button style='background-color:#090;color:#fff;border:none'>Active</Button>";
+                                                } else if($rowData["status"] == 3) {
+                                                    $sts = "<a href='inactiveOffers.php'><Button style='background-color:#990;color:#fff;border:none'>Completed</Button></a>";
                                                 }else{
                                                     $sts = "<Button style='background-color:#900;color:#fff;border:none'>Inactive</Button>";
                                                 }
@@ -125,11 +125,11 @@ if (!isset($_SESSION['admin_id'])) {
    
     <td>" . $date->format('d-m-Y') . "</td>
     <td>" . $sts . "</td>";
-                                                ?>
+                                        ?>
 
                                                 </tr>
 
-                                                <?php
+                                        <?php
 
                                             }
                                         } else {
@@ -163,8 +163,7 @@ if (!isset($_SESSION['admin_id'])) {
                                             <H1>
                                                 <?php echo $i ?>
                                             </H1>
-                                            <img
-                                                src="https://images.sampletemplates.com/wp-content/uploads/2016/12/21102637/Technical-Business-Document.jpg">
+                                            <img src="https://images.sampletemplates.com/wp-content/uploads/2016/12/21102637/Technical-Business-Document.jpg">
                                         </div><!-- /.modal-dialog -->
                                     </div>
                                 <?php } ?>
@@ -215,7 +214,7 @@ if (!isset($_SESSION['admin_id'])) {
     <script src="../dist/js/demo.js" type="text/javascript"></script>
     <!-- page script -->
     <script type="text/javascript">
-        $(function () {
+        $(function() {
             $("#example1").DataTable({
                 "paging": true,
                 "lengthChange": true,

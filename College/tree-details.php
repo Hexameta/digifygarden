@@ -97,7 +97,7 @@ if ($offerResult) {
 
     <div class="OfferBg">
       <h1 style="text-align: center;">Take screenshot</h1>
-      <h3 style="text-align: center;">Coupon Code : <?php echo $couponID ?></h3>
+      <h3 style="text-align: center;color:white">Coupon Code : <?php echo $couponID ?></h3>
       <div class="Offercontainer">
         <div class="image">
 

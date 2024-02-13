@@ -12,7 +12,7 @@ include '../../util/connection.php';
 $error = '';
 if (isset($_POST['submit'])) {
     $t_id = $_POST['t_id'];
-    $date = $_POST['date'];
+    $date = $_POST['offerdate'];
     $coupon_code = $_POST['coupon_code'];
     echo "$t_id,$date,$coupon_code";
     $query = "insert into tbl_offers (tree_id,coupon_code,date,status) values ('$t_id', '$coupon_code','$date',1)";
@@ -121,7 +121,7 @@ if (isset($_POST['submit'])) {
                                                 <div id="div_id_password1" class="form-group required">
                                                     <label for="id_password1" class="control-label col-md-4 requiredField">Date<span class="asteriskField">*</span> </label>
                                                     <div class="controls col-md-8 ">
-                                                        <input class="input-md textinput textInput form-control" id="id_password1" name="date" placeholder="Input Date" style="margin-bottom: 10px" type="date" />
+                                                        <input class="input-md textinput textInput form-control" id="id_password1" name="offerdate" placeholder="Input Date" style="margin-bottom: 10px" type="date" />
                                                     </div>
                                                 </div>
                                                 <div class="form-group">

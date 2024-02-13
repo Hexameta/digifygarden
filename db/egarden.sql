@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2024 at 08:35 PM
+-- Generation Time: Feb 13, 2024 at 07:38 PM
 -- Server version: 10.5.19-MariaDB
 -- PHP Version: 8.2.4
 
@@ -163,9 +163,10 @@ INSERT INTO `tbl_page` (`about`, `id`) VALUES
 CREATE TABLE `tbl_scan_log` (
   `id` int(11) NOT NULL,
   `tree_id` varchar(50) NOT NULL,
-  `time` timestamp NOT NULL,
+  `time` timestamp NULL DEFAULT NULL,
   `ip_address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 -- --------------------------------------------------------
 
@@ -326,13 +327,13 @@ ALTER TABLE `tbl_clg_login`
 -- AUTO_INCREMENT for table `tbl_offers`
 --
 ALTER TABLE `tbl_offers`
-  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_offer_winners`
 --
 ALTER TABLE `tbl_offer_winners`
-  MODIFY `winner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `winner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_page`
@@ -344,7 +345,7 @@ ALTER TABLE `tbl_page`
 -- AUTO_INCREMENT for table `tbl_scan_log`
 --
 ALTER TABLE `tbl_scan_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=264;
 
 --
 -- Constraints for dumped tables
@@ -379,6 +380,14 @@ ALTER TABLE `tbl_offer_winners`
 --
 ALTER TABLE `tbl_tree`
   ADD CONSTRAINT `fk_tree` FOREIGN KEY (`u_id`) REFERENCES `tbl_clg` (`u_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+DELIMITER $$
+--
+-- Events
+--
+CREATE DEFINER=`root`@`localhost` EVENT `offerInactive` ON SCHEDULE EVERY 1 DAY STARTS '2024-02-14 23:00:00' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE tbl_offers set status = 0$$
+
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

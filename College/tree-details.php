@@ -40,37 +40,36 @@ $o_id = '';
 $query = "select o_id,status,coupon_code from tbl_offers where tree_id = '$t_id' and status = 1";
 $offerResult = mysqli_query($conn, $query);
 if ($offerResult) {
-  if (mysqli_num_rows($offerResult)) {
+  if (mysqli_num_rows($offerResult) > 0) {
     $row = mysqli_fetch_assoc($offerResult);
     $o_id = $row["o_id"];
     $couponID = $row["coupon_code"];
-    $quary = "Update tbl_offers set status = 3 where o_id = $o_id";
-    mysqli_query($conn, $quary);
     $winner = true;
-  }else{
-    $clgIdQuery ="select u_id from tbl_tree where t_id = '$t_id'";
+    $quary = "update tbl_offers set status = 3 where o_id = $o_id";
+    mysqli_query($conn, $quary);
+  } else {
+    $clgIdQuery = "select u_id from tbl_tree where t_id = '$t_id'";
     $clgIDResult = mysqli_query($conn, $clgIdQuery);
-    if($clgIDResult){
-      if (mysqli_num_rows($clgIDResult)) {
+    if ($clgIDResult) {
+      if (mysqli_num_rows($clgIDResult) > 0) {
         $row = mysqli_fetch_assoc($clgIDResult);
         $clg_id = $row["u_id"];
         $q = "select * from tbl_offers inner join tbl_tree on tbl_offers.tree_id = tbl_tree.t_id where tbl_tree.u_id = '$clg_id' and status = 1";
         $clgOfferStatus = mysqli_query($conn, $q);
-      
-        if(mysqli_num_rows($clgOfferStatus)){
+
+        if (mysqli_num_rows($clgOfferStatus) > 0) {
           $isClgoffer = true;
-        }else{
+        } else {
           $q = "select * from tbl_offers inner join tbl_tree on tbl_offers.tree_id = tbl_tree.t_id where tbl_tree.u_id = '$clg_id' and status = 3";
           $clgOfferCompleteStatus = mysqli_query($conn, $q);
-          if(mysqli_num_rows($clgOfferCompleteStatus)){
+          if (mysqli_num_rows($clgOfferCompleteStatus) > 0) {
             $isCompleteClgoffer = true;
           }
         }
       }
     }
   }
-
- 
+  
 }
 
 
@@ -108,31 +107,29 @@ if ($offerResult) {
 
   <script async="async" data-cfasync="false" src="//pl22448550.profitablegatecpm.com/2145f25aba6ecec6ee3dc5152b0886ed/invoke.js"></script>
 
-  
+
   <?php if ($winner) { ?>
     <link rel="stylesheet" type="text/css" href="offerStyle.css">
-  <?php }else if($clgOfferStatus){ ?>
-    
+  <?php } else if ($isClgoffer) { ?>
+
     <link rel="stylesheet" type="text/css" href="offerStyle.css">
     <script type='text/javascript' src='//pl22448897.profitablegatecpm.com/41/c1/ae/41c1ae51c39f28162c4aeadb4c657c5d.js'></script>
-    <?php }else if($clgOfferStatus){ ?>
+  <?php } else if ($isCompleteClgoffer) { ?>
     <link rel="stylesheet" type="text/css" href="offerStyle.css">
     <script type='text/javascript' src='//pl22448897.profitablegatecpm.com/41/c1/ae/41c1ae51c39f28162c4aeadb4c657c5d.js'></script>
-    <?php }else{ ?>
+  <?php } else { ?>
     <script type='text/javascript' src='//pl22448897.profitablegatecpm.com/41/c1/ae/41c1ae51c39f28162c4aeadb4c657c5d.js'></script>
- <?php } ?>
+  <?php } ?>
 
 </head>
 
 <body>
-  <?php if ($winner) { ?>
-
+  <?php if ($winner) {?>
     <div class="OfferBg">
       <h1 style="text-align: center;">Take screenshot</h1>
       <h3 style="text-align: center;color:white">Coupon Code : <?php echo $couponID ?></h3>
       <div class="Offercontainer">
         <div class="image">
-
           <p class="wintext">Congratulations Winner</p>
           <div class="pyro">
             <div class="before"></div>
@@ -165,46 +162,42 @@ if ($offerResult) {
   <?php } ?>
 
 
-  <?php if ($clgOfferStatus) { ?>
+  <?php if ($isClgoffer) { ?>
 
-<div class="OfferBg">
-  
-  <div class="Offercontainer">
-    <div class="loserimage">
+    <div class="OfferBg">
 
-      <p class="losertext hurryUpText">Ooops!! <br> Not This.
-        Try Another tree</p>
-        <!-- <p class="hurryUpText">Hurry up! Time is running out.</p> -->
+      <div class="Offercontainer">
+        <div class="loserimage">
 
-    </div>
-   
-    
-  </div>
-</div>
+          <p class="losertext hurryUpText">Ooops!! <br> Not This.
+            Try Another tree</p>
+          <!-- <p class="hurryUpText">Hurry up! Time is running out.</p> -->
 
-<?php } ?>
+        </div>
 
 
-<?php if ($isCompleteClgoffer) { ?>
-
-<div class="OfferBg">
-  
-  <div class="Offercontainer">
-    <div class="image">
-
-      <p class="huntedtext">Ooops!! Gift Already Claimed.</p>
-      <p class="huntedcaption">More Surprises Soon.</p>
-      <div class="pyro">
-        <div class="before"></div>
-        <div class="after"></div>
       </div>
     </div>
-   
-    
-  </div>
-</div>
 
-<?php } ?>
+  <?php } ?>
+
+
+  <?php if ($isCompleteClgoffer) { ?>
+
+    <div class="OfferBg">
+      <div class="Offercontainer">
+        <div class="image">
+          <p class="huntedtext">Ooops!! <br> Gift Already Claimed.</p>
+          <p class="huntedcaption">More Surprises Soon.</p>
+          <!-- <div class="pyro">
+            <div class="before"></div>
+            <div class="after"></div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+  <?php } ?>
 
   <?php
 
@@ -250,7 +243,7 @@ if ($offerResult) {
 
   if (!isset($_SESSION['u_id'])) {
     $curDate = date('Y-m-d H:i:s');
-    mysqli_query($conn, "insert into tbl_scan_log(tree_id,ip_address,time) values('$t_id','" . get_client_ip() . "')");
+    mysqli_query($conn, "insert into tbl_scan_log(tree_id,ip_address,time) values('$t_id','" . get_client_ip() . "','$curDate')");
   }
 
 
@@ -426,7 +419,7 @@ if ($offerResult) {
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
-    function GiveDetailButtonClick(){
+    function GiveDetailButtonClick() {
       // console.log("clicked");
       document.getElementsByClassName("winnerForm")[0].style.display = "flex";
       console.log(document.getElementsByClassName("winnerForm")[0].style.display);

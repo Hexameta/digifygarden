@@ -175,8 +175,8 @@ if ($offerResult) {
 
 
   if (!isset($_SESSION['u_id'])) {
-    $curTime = date('Y-m-d H:i:s');
-    mysqli_query($conn, "insert into tbl_scan_log(tree_id,ip_address,time) values('$t_id','" . get_client_ip() . "','$curTime')");
+    $curDate = date('Y-m-d H:i:s');
+    mysqli_query($conn, "insert into tbl_scan_log(tree_id,ip_address,time) values('$t_id','" . get_client_ip() . "')");
   }
 
 

@@ -163,7 +163,7 @@ INSERT INTO `tbl_page` (`about`, `id`) VALUES
 CREATE TABLE `tbl_scan_log` (
   `id` int(11) NOT NULL,
   `tree_id` varchar(50) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `time` timestamp NOT NULL,
   `ip_address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

@@ -35,6 +35,51 @@ body {
 	animation: pulse 2s infinite;
 }
 
+
+
+.losertext {
+	display: block;
+	width: 300px;
+	position: absolute;
+	top: 150px;
+	color: #ff0000;
+	text-align: center;
+	font-family: Dancing Script;
+	font-size: 50px;
+	font-weight: 600;
+	line-height: 50px;
+	animation: pulse 5s infinite;
+}
+
+.huntedtext {
+	display: block;
+	width: 300px;
+	position: absolute;
+	top: 150px;
+	color: #fff;
+	text-align: center;
+	font-family: Dancing Script;
+	font-size: 30px;
+	font-weight: 600;
+	line-height: 50px;
+	animation: pulse 5s infinite;
+}
+
+
+.huntedcaption {
+	display: block;
+	width: 300px;
+	position: absolute;
+	top: 300px;
+	color: #fff;
+	text-align: center;
+	font-family: Dancing Script;
+	font-size: 20px;
+	font-weight: 200;
+	line-height: 50px;
+	animation: pulse 5s infinite;
+}
+
 @keyframes pulse {
 	0% {
 		transform: scale(0.95);
@@ -79,7 +124,18 @@ body {
 	justify-content: center;
 	align-content: center;
 	background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
-		radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+	radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+	
+	height: 340px;
+	border-radius: 16px;
+}
+
+.loserimage{
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	background: radial-gradient(ellipse farthest-corner at right bottom, #d7c571 0%, #f3c15d 8%, #ffdb8f 30%, #deb961 40%, transparent 80%),
+		radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #cfab57 62.5%, #aa8c46 100%);
 	height: 340px;
 	border-radius: 16px;
 }
@@ -380,4 +436,26 @@ body {
 	background-color: #fff;
 	padding: 10px;
 	border-radius: 8px ;
+}
+
+
+
+
+@keyframes hurryUp {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+.hurryUpText {
+    animation: hurryUp 1s ease infinite;
 }

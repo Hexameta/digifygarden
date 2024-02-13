@@ -33,6 +33,8 @@ include '../util/connection.php';
 
 $t_id = $_GET['id'];
 $winner = false;
+$isClgoffer = false;
+$isCompleteClgoffer = false;
 $couponID = '';
 $o_id = '';
 $query = "select o_id,status,coupon_code from tbl_offers where tree_id = '$t_id' and status = 1";
@@ -42,10 +44,33 @@ if ($offerResult) {
     $row = mysqli_fetch_assoc($offerResult);
     $o_id = $row["o_id"];
     $couponID = $row["coupon_code"];
-    $quary = "Update tbl_offers set status = 0 where o_id = $o_id";
+    $quary = "Update tbl_offers set status = 3 where o_id = $o_id";
     mysqli_query($conn, $quary);
     $winner = true;
+  }else{
+    $clgIdQuery ="select u_id from tbl_tree where t_id = '$t_id'";
+    $clgIDResult = mysqli_query($conn, $clgIdQuery);
+    if($clgIDResult){
+      if (mysqli_num_rows($clgIDResult)) {
+        $row = mysqli_fetch_assoc($clgIDResult);
+        $clg_id = $row["u_id"];
+        $q = "select * from tbl_offers inner join tbl_tree on tbl_offers.tree_id = tbl_tree.t_id where tbl_tree.u_id = '$clg_id' and status = 1";
+        $clgOfferStatus = mysqli_query($conn, $q);
+      
+        if(mysqli_num_rows($clgOfferStatus)){
+          $isClgoffer = true;
+        }else{
+          $q = "select * from tbl_offers inner join tbl_tree on tbl_offers.tree_id = tbl_tree.t_id where tbl_tree.u_id = '$clg_id' and status = 3";
+          $clgOfferCompleteStatus = mysqli_query($conn, $q);
+          if(mysqli_num_rows($clgOfferCompleteStatus)){
+            $isCompleteClgoffer = true;
+          }
+        }
+      }
+    }
   }
+
+ 
 }
 
 
@@ -86,7 +111,14 @@ if ($offerResult) {
   
   <?php if ($winner) { ?>
     <link rel="stylesheet" type="text/css" href="offerStyle.css">
-  <?php }else{ ?>
+  <?php }else if($clgOfferStatus){ ?>
+    
+    <link rel="stylesheet" type="text/css" href="offerStyle.css">
+    <script type='text/javascript' src='//pl22448897.profitablegatecpm.com/41/c1/ae/41c1ae51c39f28162c4aeadb4c657c5d.js'></script>
+    <?php }else if($clgOfferStatus){ ?>
+    <link rel="stylesheet" type="text/css" href="offerStyle.css">
+    <script type='text/javascript' src='//pl22448897.profitablegatecpm.com/41/c1/ae/41c1ae51c39f28162c4aeadb4c657c5d.js'></script>
+    <?php }else{ ?>
     <script type='text/javascript' src='//pl22448897.profitablegatecpm.com/41/c1/ae/41c1ae51c39f28162c4aeadb4c657c5d.js'></script>
  <?php } ?>
 
@@ -131,6 +163,48 @@ if ($offerResult) {
       </div>
     </div>
   <?php } ?>
+
+
+  <?php if ($clgOfferStatus) { ?>
+
+<div class="OfferBg">
+  
+  <div class="Offercontainer">
+    <div class="loserimage">
+
+      <p class="losertext hurryUpText">Ooops!! <br> Not This.
+        Try Another tree</p>
+        <!-- <p class="hurryUpText">Hurry up! Time is running out.</p> -->
+
+    </div>
+   
+    
+  </div>
+</div>
+
+<?php } ?>
+
+
+<?php if ($isCompleteClgoffer) { ?>
+
+<div class="OfferBg">
+  
+  <div class="Offercontainer">
+    <div class="image">
+
+      <p class="huntedtext">Ooops!! Gift Already Claimed.</p>
+      <p class="huntedcaption">More Surprises Soon.</p>
+      <div class="pyro">
+        <div class="before"></div>
+        <div class="after"></div>
+      </div>
+    </div>
+   
+    
+  </div>
+</div>
+
+<?php } ?>
 
   <?php
 

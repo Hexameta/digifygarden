@@ -169,7 +169,7 @@ if ($offerResult) {
       <div class="Offercontainer">
         <div class="loserimage">
 
-          <p class="losertext hurryUpText">Ooops!! <br> Not This.
+          <p class="losertext hurryUpText">Ooops!! <br> Not This.<br>
             Try Another tree</p>
           <!-- <p class="hurryUpText">Hurry up! Time is running out.</p> -->
 

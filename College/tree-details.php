@@ -174,8 +174,6 @@ if ($offerResult) {
           <!-- <p class="hurryUpText">Hurry up! Time is running out.</p> -->
 
         </div>
-
-
       </div>
     </div>
 

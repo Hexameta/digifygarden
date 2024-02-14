@@ -35,17 +35,24 @@ body {
 	animation: pulse 2s infinite;
 }
 
+.loserimage{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: radial-gradient(ellipse farthest-corner at right bottom, #d7c571 0%, #f3c15d 8%, #ffdb8f 30%, #deb961 40%, transparent 80%),
+		radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #cfab57 62.5%, #aa8c46 100%);
+	height: 340px;
+	border-radius: 16px;
+}
 
-
-.losertext {
-	display: block;
-	width: 300px;
-	position: absolute;
-	top: 150px;
-	color: #ff0000;
+.loserimage .losertext {
+	color: #ac0303;
 	text-align: center;
-	font-family: Dancing Script;
+	justify-content: center;
+	align-content: center;
+
 	font-size: 50px;
+	font-family: Dancing Script;
 	font-weight: 600;
 	line-height: 50px;
 	animation: pulse 5s infinite;
@@ -130,15 +137,7 @@ body {
 	border-radius: 16px;
 }
 
-.loserimage{
-	display: flex;
-	justify-content: center;
-	align-content: center;
-	background: radial-gradient(ellipse farthest-corner at right bottom, #d7c571 0%, #f3c15d 8%, #ffdb8f 30%, #deb961 40%, transparent 80%),
-		radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #cfab57 62.5%, #aa8c46 100%);
-	height: 340px;
-	border-radius: 16px;
-}
+
 
 .pyro>.before,
 .pyro>.after {

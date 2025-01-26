@@ -26,20 +26,21 @@ if(isset($_POST['submit'])){
 
 if($result){
 
-  if (isset($_FILES['audio'])) {
+  if (isset($_FILES['audio']) && $_FILES['audio']['error'] == 0) {
   
     $fileName = $_FILES['audio']['name'];
     $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
     $target_dir = "./tree_audios/";
+
     if($fileExtension == 'mp3'){
         $audio_target_file = $target_dir . $t_id . ".mp3";
         move_uploaded_file($_FILES["audio"]["tmp_name"], $audio_target_file);
     }else{
-        $error = "Audio file must be in mp3 format";
+        $error = "Audio file must be in mp3 format now its in".($_FILES['audio']);
         $uploadOk = 0;
 
         echo '<script type="text/javascript">
-        window.location.href = "./edit-tree.php?regerror='.$error.'" ;
+         window.location.href = "./edit-tree.php?id=' . $t_id . '&regerror=' . urlencode($error) . '" ;
            </script>';
     }
 }
@@ -50,12 +51,11 @@ if($result){
         $target_file = $target_dir . $t_id.".jpg";
         $target_file = $target_dir . $t_id.".jpg";
         $uploadOk = 1;
-        if ($_FILES["image"]["size"] > 500000) {
+        if ($_FILES["image"]["size"] > 5000000) {
            $err= "Sorry, your file is too large.";
 
            echo '<script type="text/javascript">
-           window.location.href = "./edit-tree.php?regerror='.$err.'" ;
-
+            window.location.href = "./edit-tree.php?id=' . $t_id . '&regerror=' . urlencode($err) . '" ;
               </script>';
 
             $uploadOk = 0;
@@ -66,10 +66,12 @@ if($result){
             
             $err= "Sorry, your file was not uploaded.";
             echo '<script type="text/javascript">
-              window.location.href = "./edit-tree.php?regerror='.$err.'" ;
+             window.location.href = "./edit-tree.php?id=' . $t_id . '&regerror=' . urlencode($err) . '" ;
               </script>';
+              
           // if everything is ok, try to upload file
           } else {
+            
             if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
             //   echo "The file ". htmlspecialchars( basename( $_FILES["image"]["name"])). " has been uploaded.";
             //   header("Location: ../index.php");
@@ -84,8 +86,8 @@ if($result){
             } else {
               $err= "Sorry, there was an error uploading your file.";
 
-              echo '<script type="text/javascript">
-              window.location.href = "./edit-tree.php?regerror='.$err.'" ;
+              echo '<script type="text/javascript"> 
+              window.location.href = "./edit-tree.php?id=' . $t_id . '&regerror=' . urlencode($err) . '" ;
               </script>';
             }
           }
@@ -104,9 +106,9 @@ if($result){
        
   
 }else{
-    $err =  "Tree Details Not Added";
+    $error =  "Tree Details Not Added";
     echo '<script type="text/javascript">
-    window.location.href = "./edit-tree.php?regerror='.$err.'" ;
+    window.location.href = "./edit-tree.php?id=' . $t_id . '&regerror=' . urlencode($error) . '" ;
     </script>';
     
 }

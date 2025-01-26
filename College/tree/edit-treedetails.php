@@ -26,6 +26,24 @@ if(isset($_POST['submit'])){
 
 if($result){
 
+  if (isset($_FILES['audio'])) {
+  
+    $fileName = $_FILES['audio']['name'];
+    $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
+    $target_dir = "./tree_audios/";
+    if($fileExtension == 'mp3'){
+        $audio_target_file = $target_dir . $t_id . ".mp3";
+        move_uploaded_file($_FILES["audio"]["tmp_name"], $audio_target_file);
+    }else{
+        $error = "Audio file must be in mp3 format";
+        $uploadOk = 0;
+
+        echo '<script type="text/javascript">
+        window.location.href = "./edit-tree.php?regerror='.$error.'" ;
+           </script>';
+    }
+}
+
     if($_FILES["image"]['size'] > 0){
         
         $target_dir = "./tree_images/";
@@ -58,6 +76,8 @@ if($result){
 
             //working
 
+       
+          
             echo '<script>
             window.location.href = " ../tree_list.php" ;
             </script>';

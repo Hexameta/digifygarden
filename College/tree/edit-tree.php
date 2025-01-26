@@ -39,6 +39,7 @@ $error = '';
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Vendor CSS-->
     <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
@@ -60,13 +61,12 @@ $error = '';
             <div class="card-body">
                 <h2 class="title">Tree Registration</h2>
                 <?php
-                if (isset($_GET['regerror'])) {
-                    echo "<h5 style='color:red;'>" . $_GET['regerror'] . "</h5>";
-                }
+                if (isset($_GET['regerror'])) { ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php echo  $_GET['regerror'] ?>
+                    </div>
+              <?php  } ?>
 
-
-
-                ?>
                 <form action="edit-treedetails.php" method="POST" enctype="multipart/form-data">
 
                     <?php
@@ -96,49 +96,91 @@ $error = '';
                     }
 
                     ?>
-
+                        <div class="row">
+                    <div class="col-md-6">
                     <div class="input-group">
-                        <input class="input--style-1" type="text" placeholder="NAME" value="<?php echo $t_name ?>" name="name">
+                        <input class="input--style-1" type="text" placeholder="Name*" value="<?php echo $t_name ?>" name="name">
                     </div>
-                    <div class="input-group">
-                        <input class="input--style-1" type="text" placeholder="FAMILY" value="<?php echo $family ?>" name="family">
-                    </div>
-                    <div class="input-group">
-                        <input class="input--style-1" type="text" placeholder="SYNONYM" value="<?php echo $synonym ?> " name="synonym">
-                    </div>
-                    <div class="input-group">
-                        <input class="input--style-1" type="text" placeholder="COMMON NAME" value="<?php echo $com_name ?> " name="comname">
-                    </div>
-                    <div class="input-group">
-                        <input class="input--style-1" type="text" placeholder="PERIOD" value="<?php echo $fperiod ?> " name="period">
-                    </div>
-                    <div class="input-group">
-                        <input class="input--style-1" type="text" placeholder="ORIGIN" value="<?php echo $origin ?> " name="origin">
                     </div>
 
-
-                    <input class="input--style-1" hidden placeholder="ORIGIN" value="<?php echo $t_id ?>" name="tid">
-
-
-
-
+                    <div class="col-md-6">
                     <div class="input-group">
-                        <input class="input--style-1" type="text" placeholder="HABITAT" value="<?php echo $habitat ?> " name="habitat">
+                        <input class="input--style-1" type="text" placeholder="Family*" value="<?php echo $family ?>" name="family">
                     </div>
-                    <div class="input-group">
-                        <input class="input--style-1" type="text" placeholder="USES" value="<?php echo $uses ?> " name="uses">
                     </div>
+
+                    <div class="col-md-6">
                     <div class="input-group">
-                        <input class="input--style-1" name="char" id="" cols="30" value="<?php echo $key_char ?> " rows="10" placeholder="charecter">
+                        <input class="input--style-1" type="text" placeholder="Synonym*" value="<?php echo $synonym ?> " name="synonym">
                     </div>
+                   </div>
+
+                   <div class="col-md-6">
                     <div class="input-group">
+                        <input class="input--style-1" type="text" placeholder="Common Name*" value="<?php echo $com_name ?> " name="comname">
+                    </div>
+                    </div>
+
+                    <div class="col-md-6">
+                    <div class="input-group">
+                        <input class="input--style-1" type="text" placeholder="Period*" value="<?php echo $fperiod ?> " name="period">
+                    </div>
+                    </div>
+
+                    <div class="col-md-6">
+                    <div class="input-group">
+                        <input class="input--style-1" type="text" placeholder="Origin*" value="<?php echo $origin ?> " name="origin">
+                    </div>
+                    </div>
+
+
+             
+                    <input class="input--style-1" hidden placeholder="" value="<?php echo $t_id ?>" name="tid">
+                 
+
+                    <div class="col-md-12">
+                    <div class="input-group">
+                        <input class="input--style-1" type="text" placeholder="Habitat*" value="<?php echo $habitat ?> " name="habitat">
+                    </div>
+                    </div>
+
+
+                    <div class="col-md-12">
+                            <div class="mb-3">
+                                <textarea class="form-control" placeholder="Uses*" name="uses" required><?php echo $uses ?> </textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <textarea class="form-control" name="char" placeholder="Character*" required><?php echo $key_char ?> </textarea>
+                            </div>
+                        </div>
+
+
+                      <span>  Selcted Image: </span>
+                    <div class="form-group">
                         <?php
-                        echo '<img src="./tree_images/' . $t_id . '.jpg" alt="not found"  style="width: 100px; height:auto" id="imgView1">';
+                        echo '<img src="./tree_images/' . $t_id . '.jpg" alt="not found"  style="width: 100px; height:auto; margin-bottom: 10px;" id="imgView1">';
                         ?>
 
-                        <input class="input--style-1" type="file" name="image" id="" onchange="viewImage1(event)">
+                        <input class="form-control" class="input--style-1" type="file" name="image" id="" onchange="viewImage(event)">
                     </div>
 
+                    <span style="padding-top:20px;">  Selcted Audio: </span>
+                    <div class="form-group">
+                    <?php
+    $audioPath = './tree_audios/' . $t_id . '.mp3';
+    $audioVisible = file_exists($audioPath); 
+
+    echo '<audio src="' . $audioPath . '" ' . (!$audioVisible ? 'hidden' : '') . ' controls id="audioView"></audio>';
+
+                        ?>
+
+                   <input accept="audio/mp3" type="file" class="form-control" name="audio" id="" onchange="viewAudio(event)">
+                    </div>
+
+
+                    </div>
 
                     <div class="p-t-20">
                         <button class="btn btn--radius btn--green" name="submit" type="submit">Submit</button>
@@ -151,8 +193,16 @@ $error = '';
     </div>
 
     <script>
-        function viewImage1(event) {
+        function viewImage(event) {
             document.getElementById('imgView1').src = URL.createObjectURL(event.target.files[0])
+        }
+
+        function viewAudio(event) {
+            const audioElement = document.getElementById('audioView');
+
+             audioElement.src = URL.createObjectURL(event.target.files[0]);
+
+        audioElement.removeAttribute('hidden');    
         }
     </script>
 

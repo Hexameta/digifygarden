@@ -101,6 +101,9 @@ if ($offerResult) {
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link type="text/css" href="../node_modules/%40fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
+  <link href="assets/css/audio.css" rel="stylesheet">
+
 
   <link href="assets/css/style.css" rel="stylesheet">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416" crossorigin="anonymous"></script>
@@ -253,7 +256,6 @@ if ($offerResult) {
   } else {
     if (mysqli_num_rows($tdetails) > 0) {
       while ($rowData = mysqli_fetch_array($tdetails)) {
-
         $t_name = $rowData["t_name"];
         $family = $rowData["family"];
         $synonym = $rowData["synonym"];
@@ -314,17 +316,22 @@ if ($offerResult) {
           <div class="col-lg-8">
             <div class="portfolio-details-slider swiper">
               <div class="swiper-wrapper align-items-center">
-
                 <div class="" style="  margin-left: auto; margin-right: auto;">
                   <?php
                   echo '<img src="tree/tree_images/' . $t_id . '.jpg" alt="not found">';
                   ?>
                 </div>
-
-
               </div>
               <div class="swiper-pagination"></div>
             </div>
+            <?php 
+            if (file_exists("tree/tree_audios/" . $t_id . ".mp3")) {
+              $image = 'tree/tree_images/' . $t_id . '.jpg';
+              $name = $t_name;
+              $audio = 'tree/tree_audios/' . $t_id . '.mp3';
+              include "audio_player.php"; 
+            }
+            ?>
           </div>
 
           <div class="col-lg-4">
@@ -334,7 +341,7 @@ if ($offerResult) {
                 <?php echo $t_name ?>
               </h4>
               <ul>
-                <li><strong>Common Name:</strong>:
+                <li><strong>Common Name</strong>:
                   <?php echo $com_name ?>
                 </li>
                 <li><strong>Family</strong>:
@@ -370,7 +377,7 @@ if ($offerResult) {
             <?php if (isset($_SESSION['u_id'])) { ?>
               <div class="text-center">
 
-                <img src="https://chart.googleapis.com/chart?cht=qr&chl=<?php echo $currentPageUrl ?>&chs=160x160&chld=L|0" class="qr-code img-thumbnail img-responsive" />
+                <img src="https://quickchart.io/qr?text=<?php echo $currentPageUrl ?>" class="qr-code img-thumbnail img-responsive" />
 
 
               </div>
@@ -412,7 +419,9 @@ if ($offerResult) {
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/js/audio.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>

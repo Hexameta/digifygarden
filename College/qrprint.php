@@ -307,7 +307,7 @@ $result = mysqli_query($conn, $query);
                 </div>
                 <div class="qrmain">
                     <img id="qrimg"
-                        src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http://digifygarden.com/College/tree-details.php?id=<?php echo $row["t_id"]; ?>&choe=UTF-8"
+                        src="https://quickchart.io/qr?text=http://digifygarden.com/College/tree-details.php?id=<?php echo $row["t_id"]; ?>&choe=UTF-8"
                         title="Link to Google.com" />
                     <span>SCAN ME</span>
                 </div>

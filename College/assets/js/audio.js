@@ -175,19 +175,12 @@ $(function () {
         }
     }
 
-    function seeking() {
-        clearInterval(buffInterval);
-        albumArt.addClass("buffering");
-
-        seekLoc = audio.duration * (seekBar.width() / sArea.outerWidth());
-
-        audio.currentTime = seekLoc;
-
-        nTime = new Date();
-        nTime = nTime.getTime();
-
-        clearInterval(buffInterval);
-        checkBuffering();
+    function seekingButtonClick(btn) {
+        if(btn === "forward") {
+            audio.currentTime += 10;
+        } else if(btn === "backward") {
+            audio.currentTime -= 10;
+        }
     }
 
     function initPlayer() {
@@ -210,10 +203,10 @@ $(function () {
         $(audio).on("timeupdate", updateCurrTime);
 
         playPreviousTrackButton.on("click", function () {
-            selectTrack(-1);
+            seekingButtonClick("backward");
         });
         playNextTrackButton.on("click", function () {
-            selectTrack(1);
+            seekingButtonClick("forward");
         });
     }
 

@@ -28,7 +28,7 @@ $result = mysqli_query($conn, $query);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Digify Garden</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     <style>
         .float {
             position: fixed;
@@ -74,13 +74,15 @@ $result = mysqli_query($conn, $query);
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 90vh;
         }
 
         .base {
             position: relative;
             overflow: hidden;
             display: flex;
-
+            justify-content: center;
+            align-items: center;
             width: 500px;
             height: 705px;
 
@@ -92,10 +94,14 @@ $result = mysqli_query($conn, $query);
             width: 90%;
             height: 85%;
             border-radius: 15px;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+            position: relative;
+            padding: 1rem;
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            /* left: 50%;
+            top: 50%; */
+            /* transform: translate(-50%, -50%); */
             background: rgba(255, 255, 255, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.17);
             backdrop-filter: blur(1px);
@@ -113,12 +119,12 @@ $result = mysqli_query($conn, $query);
             font-weight: 600;
         }
 
-        /* Styles for:
-** - Using IMG tag inside a container
------------------------------------------- */
-        /* The image container */
         .card__thumbnail {
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             overflow: hidden;
             display: flex;
             justify-content: center;
@@ -168,7 +174,8 @@ $result = mysqli_query($conn, $query);
 
         .clogo img {
             height: 100px;
-
+            max-width: 100%;
+            object-fit: contain;
         }
 
         .heading img {
@@ -280,16 +287,27 @@ $result = mysqli_query($conn, $query);
         .treename {
             color: #0006;
             position: absolute;
-            right: -9%;
-            bottom: 9%;
+            right: -25px;
+            bottom: 55px;
             font-size: 12px;
             transform: rotate(-90deg);
+        }
+
+        @media screen and (max-width:550px) {
+            .base {
+                width: 400px;
+                height: 550px;
+            }
+
+            .clogo img {
+                height: 75px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <p class="note">NOTE: please download through computer for printing quality and size</p>
+    <!-- <p class="note">NOTE: please download through computer for printing quality and size</p> -->
     <?php $row = mysqli_fetch_array($result) ?>
     <div class="container">
 
@@ -358,7 +376,7 @@ $result = mysqli_query($conn, $query);
             docu.save(name + ".pdf");
         }
     </script>
-   
+
 </body>
 
 </html>

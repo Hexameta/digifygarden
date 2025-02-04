@@ -108,7 +108,7 @@ if ($offerResult) {
   <link href="assets/css/style.css" rel="stylesheet">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8430383438150416" crossorigin="anonymous"></script>
 
-  <script async="async" data-cfasync="false" src="//pl22448550.profitablegatecpm.com/2145f25aba6ecec6ee3dc5152b0886ed/invoke.js"></script>
+  <!-- <script async="async" data-cfasync="false" src="//pl22448550.profitablegatecpm.com/2145f25aba6ecec6ee3dc5152b0886ed/invoke.js"></script> -->
 
 
   <?php if ($winner) { ?>
@@ -116,12 +116,12 @@ if ($offerResult) {
   <?php } else if ($isClgoffer) { ?>
 
     <link rel="stylesheet" type="text/css" href="offerStyle.css">
-    <script type='text/javascript' src='//pl22448897.profitablegatecpm.com/41/c1/ae/41c1ae51c39f28162c4aeadb4c657c5d.js'></script>
+    <!-- <script type='text/javascript' src='//pl22448897.profitablegatecpm.com/41/c1/ae/41c1ae51c39f28162c4aeadb4c657c5d.js'></script> -->
   <?php } else if ($isCompleteClgoffer) { ?>
     <link rel="stylesheet" type="text/css" href="offerStyle.css">
-    <script type='text/javascript' src='//pl22448897.profitablegatecpm.com/41/c1/ae/41c1ae51c39f28162c4aeadb4c657c5d.js'></script>
+    <!-- <script type='text/javascript' src='//pl22448897.profitablegatecpm.com/41/c1/ae/41c1ae51c39f28162c4aeadb4c657c5d.js'></script> -->
   <?php } else { ?>
-    <script type='text/javascript' src='//pl22448897.profitablegatecpm.com/41/c1/ae/41c1ae51c39f28162c4aeadb4c657c5d.js'></script>
+    <!-- <script type='text/javascript' src='//pl22448897.profitablegatecpm.com/41/c1/ae/41c1ae51c39f28162c4aeadb4c657c5d.js'></script> -->
   <?php } ?>
 
 </head>
